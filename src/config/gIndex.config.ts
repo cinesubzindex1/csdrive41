@@ -65,8 +65,8 @@ const config: z.input<typeof Schema_Config> = {
      *
      * Then you need to encrypt it using `/api/internal/encrypt?q=:shared_drive_id` route
      */
-    isTeamDrive: true,
-    sharedDrive: "8b9cb2636e3b3ff80b76d107591ea9f666c349ec12e4ad95d49ae19d63fb0c8e",
+    isTeamDrive: false,
+    sharedDrive: "",
 
     defaultQuery: [
       "trashed = false",
