@@ -50,7 +50,7 @@ const config: z.input<typeof Schema_Config> = {
      * You need to create a new folder and share it with the service account
      * Then, copy the folder id and paste it here
      */
-    rootFolder: "137187b89250c6c1fcff4543535d67a6e694ca1ad8bd202d7827f3adb855e6a86e50b35b28a3cd056ab9124455fd5e17",
+    rootFolder: "40621eb6a12a5afba8b83fb81c4c0e5fecb06f79cf4704901edd2752e332d3089d721d2b728e3182d5d6266ca3ee0a8b",
 
     /**
      * If your rootfolder inside a shared drive, you NEED to set this to true
@@ -65,8 +65,8 @@ const config: z.input<typeof Schema_Config> = {
      *
      * Then you need to encrypt it using `/api/internal/encrypt?q=:shared_drive_id` route
      */
-    isTeamDrive: true,
-    sharedDrive: "ccb0ae899dad289707adc143173fc02ef051fdfac786813bd18e38e193f4b28d",
+    isTeamDrive: false,
+    sharedDrive: "",
 
     defaultQuery: [
       "trashed = false",
