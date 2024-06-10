@@ -204,7 +204,7 @@ export default function PreviewInformation({ file }: Props) {
               >
                 <DialogTrigger asChild>
                   <span className='cursor-pointer text-center text-sm text-blue-600 opacity-80 transition-all duration-300 hover:opacity-100 dark:text-blue-400 tablet:text-start'>
-                    Difference between download link and raw link?
+
                   </span>
                 </DialogTrigger>
                 <DialogContent>
