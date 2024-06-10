@@ -244,55 +244,7 @@ export default function PreviewInformation({ file }: Props) {
                 onOpenChange={setIsRawExplanationOpen}
                 shouldScaleBackground
               >
-                <DrawerTrigger asChild>
-                  <span className='cursor-pointer text-center text-sm text-blue-600 opacity-80 transition-all duration-300 hover:opacity-100 dark:text-blue-400 tablet:text-start'>
-                    Difference between download link and raw link?
-                  </span>
-                </DrawerTrigger>
-                <DrawerContent>
-                  <DrawerHeader></DrawerHeader>
-                  <div className='flex h-fit flex-col gap-3 px-4'>
-                    <h4>Why?</h4>
-                    <p>
-                      Some services need the file extension to be present in the URL to properly embed the file.
-                      <br />
-                      - The download link only have encrypted file id.
-                      <br />
-                      - The raw link will have the whole path includes the file name and extension.
-                      <br />
-                      <br />
-                      So if you want to embed the file, it&apos;s recommended to use the raw link instead of the
-                      download link.
-                    </p>
-                    <h4>Ref</h4>
-                    <p>
-                      This information is based on the onedrive-vercel-index project documentation.
-                      <br />
-                      <Link
-                        href='https://ovi.swo.moe/docs/features/customise-direct-link'
-                        target='_blank'
-                        rel='noreferrer noopener'
-                        className='text-blue-600 opacity-80 transition-all duration-300 hover:opacity-100 dark:text-blue-400'
-                      >
-                        Customise Direct Link - onedrive-vercel-index
-                      </Link>
-                    </p>
-                  </div>
-                  <DrawerFooter>
-                    <DrawerClose asChild>
-                      <Button
-                        size={"sm"}
-                        variant={"secondary"}
-                      >
-                        Close
-                      </Button>
-                    </DrawerClose>
-                  </DrawerFooter>
-                </DrawerContent>
-              </Drawer>
-            )}
-          </div>
-
+               
           <div className='flex flex-col-reverse gap-3 tablet:flex-row tablet:items-center'>
         
             <ButtonLoading
