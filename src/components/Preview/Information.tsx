@@ -294,8 +294,7 @@ export default function PreviewInformation({ file }: Props) {
           </div>
 
           <div className='flex flex-col-reverse gap-3 tablet:flex-row tablet:items-center'>
-            {showRaw ? (
-            
+        
             <ButtonLoading
               size={"sm"}
               onClick={onDownload}
