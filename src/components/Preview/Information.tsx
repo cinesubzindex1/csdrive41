@@ -309,6 +309,11 @@ export default function PreviewInformation({ file }: Props) {
 
       <Card slot='file-info'>
         <CardHeader>
+        මේක ගන්න නම් ඔයා අපේ සයිට් එකේ රෙජිස්ටර් වෙන්න ඕන.
+මේ පහල ලින්ක් එකට ගිහින් ඔයා අපිට ඔයාගේ ඊමේල් එකයි,නමයි, පොන් නම්බර් එකයි දෙන්න ඕන. 
+දවසක් ඇතුලත අපි ඔයාව ඇඩ් කරලා ඔයාට ඊමේල් එකක් එවනවා.ඊට පස්සේ ඔයාට පුළුවන් මේක ගන්න. අනිවාර්යයෙන්ම ඒ අපිට දුන්න ඊමේල් එකෙන්ම ලොග් වෙලා මේක ගන්න.
+<a href="https://forms.gle/KgAwqwV8XurxqfLv9" target="_blank" rel="noopener noreferrer">රෙජිස්ටර් ලින්ක්</a>
+<a href="https://t.me/CineSubzAdmin" target="_blank" rel="noopener noreferrer">උදව් අවශ්‍ය නම්</a>
           <CardTitle>File Information</CardTitle>
         </CardHeader>
         <CardContent>
