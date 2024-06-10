@@ -50,7 +50,7 @@ const config: z.input<typeof Schema_Config> = {
      * You need to create a new folder and share it with the service account
      * Then, copy the folder id and paste it here
      */
-    rootFolder: "afb8dc349431ead1ef3e0dc58a066aea35dd44e2dcbd09d1afbf504f95660ff5537f0f636a946b5a4c2f5d0c850a8bde",
+    rootFolder: "2ca07781a9bf2c5dfc46dba8f73d839b20cce9d18b8d7583bc2146d9a5e0828e8e0be9460bcc14d329f03096584ed0ec",
 
     /**
      * If your rootfolder inside a shared drive, you NEED to set this to true
@@ -66,7 +66,7 @@ const config: z.input<typeof Schema_Config> = {
      * Then you need to encrypt it using `/api/internal/encrypt?q=:shared_drive_id` route
      */
     isTeamDrive: true,
-    sharedDrive: "5a0b3847e5e990582ec3bd286e21dc2f44148fa212dfbe34fd21a6db6d42f812",
+    sharedDrive: "e5f676e546ceff33bfb93d5e02aadaf090a98fec0c9e06d5ed540e20d1cafda3",
 
     defaultQuery: [
       "trashed = false",
@@ -193,9 +193,9 @@ const config: z.input<typeof Schema_Config> = {
      *
      * You can set it to undefined if you don't want to use it
      */
-    siteName: "next-gdrive-index",
+    siteName: "CSDrive4.1",
     siteNameTemplate: "%s - %t",
-    siteDescription: "A Google Drive Index built using Next.js",
+    siteDescription: "CineSubz-Movies With  Sinhala Subtitles",
 
     /**
      * Site Icon will be used on navbar
@@ -208,8 +208,8 @@ const config: z.input<typeof Schema_Config> = {
      * Both are used on metadata
      * Affects the value of footer
     */
-    siteAuthor: "mbahArip",
-    twitterHandle: "@mbahArip",
+    siteAuthor: "CyberDev",
+    twitterHandle: "@CyberDev",
 
     /**
      * Next.js Metadata robots object
@@ -246,7 +246,6 @@ const config: z.input<typeof Schema_Config> = {
      * - {{ creator }} will be replaced with mbaharip if you want to credit me
      */
     footer: [
-      "{{ siteName }} *v{{ version }}* @ {{ repository }}",
       "{{ year }} - Made with ❤️ by **{{ author }}**",
     ],
 
