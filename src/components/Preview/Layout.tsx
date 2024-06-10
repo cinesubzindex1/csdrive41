@@ -69,49 +69,7 @@ export default function PreviewLayout({ data, fileType }: Props) {
           <Separator />
         </CardHeader>
 
-        <CardContent className='p-1.5 pt-0 tablet:p-3 tablet:pt-0'>
-          {config.apiConfig.streamMaxSize && Number(data.size || 0) > config.apiConfig.streamMaxSize ? (
-            <Status
-              icon='Frown'
-              message='File is too large to preview'
-            />
-          ) : (
-            <div className='px-3'>
-              {fileType === "image" ? (
-                <PreviewImage file={data} />
-              ) : fileType === "audio" ? (
-                <PreviewAudio file={data} />
-              ) : fileType === "video" ? (
-                <PreviewVideo file={data} />
-              ) : fileType === "code" ? (
-                <PreviewRich
-                  file={data}
-                  code
-                  view={view}
-                />
-              ) : fileType === "text" ? (
-                <PreviewRich
-                  file={data}
-                  view={view}
-                />
-              ) : fileType === "markdown" ? (
-                <PreviewRich
-                  file={data}
-                  view={view}
-                />
-              ) : fileType === "document" ? (
-                <PreviewDocument file={data} />
-              ) : fileType === "pdf" ? (
-                <PreviewDocument file={data} />
-              ) : fileType === "manga" ? (
-                <PreviewManga file={data} />
-              ) : (
-                <PreviewUnknown />
-              )}
-            </div>
-          )}
-        </CardContent>
-      </Card>
+      
 
       <PreviewInformation file={data} />
     </div>
