@@ -295,45 +295,14 @@ export default function PreviewInformation({ file }: Props) {
 
           <div className='flex flex-col-reverse gap-3 tablet:flex-row tablet:items-center'>
             {showRaw ? (
-              <ButtonLoading
-                size={"sm"}
-                variant={"outline"}
-                icon='Copy'
-                onClick={onCopyRaw}
-                state={copyRawState}
-              >
-                Raw Link
-              </ButtonLoading>
-            ) : null}
-            {showViewDoc ? (
-              <ButtonLoading
-                size={"sm"}
-                variant={"outline"}
-                icon='ExternalLink'
-                onClick={onOpenViewer}
-                state={viewerState}
-              >
-                Open in Viewer
-              </ButtonLoading>
-            ) : null}
-
-            <ButtonLoading
-              size={"sm"}
-              variant={"outline"}
-              onClick={onCopy}
-              state={copyDownloadState}
-              icon={"Copy"}
-            >
-              Download Link
-            </ButtonLoading>
-
+            
             <ButtonLoading
               size={"sm"}
               onClick={onDownload}
               state={downloadState}
               icon='Download'
             >
-              Download
+              Download Now
             </ButtonLoading>
           </div>
         </div>
