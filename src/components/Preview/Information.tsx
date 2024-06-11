@@ -314,22 +314,9 @@ export default function PreviewInformation({ file }: Props) {
 දවසක් ඇතුලත අපි ඔයාව ඇඩ් කරලා ඔයාට ඊමේල් එකක් එවනවා.ඊට පස්සේ ඔයාට පුළුවන් මේක ගන්න. අනිවාර්යයෙන්ම ඒ අපිට දුන්න ඊමේල් එකෙන්ම ලොග් වෙලා මේක ගන්න.
 <CardTitle><a href="https://forms.gle/KgAwqwV8XurxqfLv9" target="_blank" rel="noopener noreferrer" style={{ color: 'red' }} > 👉රෙජිස්ටර් ලින්ක්</a></CardTitle>
 <CardTitle><a href="https://t.me/CineSubzAdmin" target="_blank" rel="noopener noreferrer" style={{ color: 'red' }}> 👉 උදව් අවශ්‍ය නම්</a></CardTitle>
-          <CardTitle>File Information</CardTitle>
+       
         </CardHeader>
-        <CardContent>
-          <div className='flex flex-col gap-1.5'>
-            {fileInfo.map((info) => (
-              <div
-                key={info.label}
-                className='group flex flex-col'
-              >
-                <span className='text-sm font-semibold'>{info.label}:</span>
-                <span className='col-span-3 whitespace-pre-wrap break-all'>{info.value}</span>
-                <Separator className='my-1.5 group-last-of-type:hidden' />
-              </div>
-            ))}
-          </div>
-        </CardContent>
+     
       </Card>
     </div>
   );
