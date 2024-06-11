@@ -50,7 +50,7 @@ const config: z.input<typeof Schema_Config> = {
      * You need to create a new folder and share it with the service account
      * Then, copy the folder id and paste it here
      */
-    rootFolder: "df57fc4fa8ad7faada6d56578e21334a90cda8e2783aeec45026e448bad9973e7f8b148016a40af2fe10916ca1dce99c",
+    rootFolder: "8d155ce27396746c9386e75b68c38959a76d442c8b7f19df8bc8fb4f2ad3300fbb8f1ba3ffc68b432f3026f44e7e68ab",
 
     /**
      * If your rootfolder inside a shared drive, you NEED to set this to true
@@ -66,7 +66,7 @@ const config: z.input<typeof Schema_Config> = {
      * Then you need to encrypt it using `/api/internal/encrypt?q=:shared_drive_id` route
      */
     isTeamDrive: true,
-    sharedDrive: "ff2c8b40e2ce128704262c7189fd2cc09c6f50721f372e5c01589f3a4bee0a2d",
+    sharedDrive: "940de78b267f4b2cde498541236a4cb2aa204041235b89557ede246f06eab119",
 
     defaultQuery: [
       "trashed = false",
@@ -83,8 +83,8 @@ const config: z.input<typeof Schema_Config> = {
      * 
      * @default: 50 items per page | 5 search result
     */
-    itemsPerPage: 50,
-    searchResult: 5,
+    itemsPerPage: 1,
+    searchResult: 1,
 
     /**
      * By default, the app will use the thumbnail URL from Google Drive
