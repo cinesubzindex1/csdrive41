@@ -309,7 +309,7 @@ export default function PreviewInformation({ file }: Props) {
 
       <Card slot='file-info'>
         <CardHeader>
-    🔹  මේකෙන් ඩවුන්ලොඩ් වෙන්නේ ගුගල් Drive එකෙන්.<br />
+   🔹  Download Now  ක්ලික් කලාට පස්සේ එන පිටුවේ Download Anyway කියලා බටන් එක ක්ලික් කරන්න ඩවුන්ලෝඩ් එක Start වෙයි.<br />
    🟢 ගැටලුවක් තියෙනවා නම් කියන්න 👉 <a href="https://t.me/CineSubzAdmin" target="_blank" rel="noopener noreferrer" style={{ color: 'red' }}> 🔴 Admin 🔴</a>
 <CardTitle></CardTitle>
        
