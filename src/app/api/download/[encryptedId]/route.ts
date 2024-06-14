@@ -81,7 +81,7 @@ If you've already entered the password, please make sure your browser is not blo
     if (!fileMeta.data.webContentLink) throw new Error("No download link found");
 
     if (config.apiConfig.maxFileSize && fileSize > config.apiConfig.maxFileSize) {
-      const contentUrl = new URL(fileMeta.data.webContentLink);
+      const contentUrl = new URL(fileMeta.data.webContentLink?.replace('drive.google.com/uc','drive.usercontent.google.com/download'));
       contentUrl.searchParams.set("confirm", "1");
       return NextResponse.redirect(contentUrl, {
         status: 302,
