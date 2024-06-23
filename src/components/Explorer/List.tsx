@@ -73,7 +73,7 @@ export default function FileList({ data, disabled }: Props) {
 
       const timeout = setTimeout(() => {
         clearTimeout(timeout);
-        window.open(`/api/download/${data.encryptedId}?token=${token}`);
+        window.location.href = `/api/download/${data.encryptedId}?token=${token}`;
       }, 500);
     } catch (error) {
       const e = error as Error;
