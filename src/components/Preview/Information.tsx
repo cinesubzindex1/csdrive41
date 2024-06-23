@@ -144,7 +144,7 @@ export default function PreviewInformation({ file }: Props) {
 
       const timeout = setTimeout(() => {
         clearTimeout(timeout);
-        window.open(`/api/download/${file.encryptedId}?token=${token}`);
+        window.location.href = `/api/download/${file.encryptedId}?token=${token}`;
       }, 250);
     } catch (error) {
       const e = error as Error;
