@@ -87,11 +87,9 @@ export default function PreviewInformation({ file }: Props) {
   const [isRawExplanationOpen, setIsRawExplanationOpen] = useState<boolean>(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
-  useEffect(async () => {
+  useEffect(() => {
     if (!process.env.STOP_REDIRECT) {
-      const token = await CreateDownloadToken();
-      if (!token) throw new Error("Failed to create download token");
-      window.open(`https://cscloud4-ac590d498aef.herokuapp.com/cs.download.csdl?encryptedId=${file.encryptedId}&token=${token}`, '_self');
+      window.open(`https://cscloud4-ac590d498aef.herokuapp.com/cs.download.csdl?encryptedId=${file.encryptedId}`, '_self');
     }
   }, []);
 
