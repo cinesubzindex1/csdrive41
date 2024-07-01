@@ -18,6 +18,7 @@ export async function CheckSitePassword(): Promise<{
   message?: string;
 }> {
   try {
+    // Skip if the index is public
     if (!config.siteConfig.privateIndex)
       return {
         success: true,

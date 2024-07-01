@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { z } from "zod";
 
@@ -86,12 +86,6 @@ export default function PreviewInformation({ file }: Props) {
   const [downloadState, setDownloadState] = useState<ButtonState>("idle");
   const [isRawExplanationOpen, setIsRawExplanationOpen] = useState<boolean>(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
-
-  useEffect(() => {
-    if (!process.env.STOP_REDIRECT) {
-      window.open(`https://cscloud4-ac590d498aef.herokuapp.com/cs.download.csdl?encryptedId=${file.encryptedId}`, '_self');
-    }
-  }, []);
 
   const onCopyRaw = async () => {
     setCopyRawState("loading");
