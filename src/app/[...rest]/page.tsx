@@ -105,6 +105,7 @@ export default async function RestPage({ params: { rest } }: Props) {
     }
   });
   return (
+    {!('files' in data)?(<></>):(
       <>
     <div className={cn("h-fit w-full", "flex flex-col gap-3")}>
       <FilePath
@@ -144,5 +145,6 @@ export default async function RestPage({ params: { rest } }: Props) {
       )}
     </div>
     </>
+    )}
   );
 }
