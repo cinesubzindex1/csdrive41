@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { z } from "zod";
 
@@ -86,6 +86,14 @@ export default function PreviewInformation({ file }: Props) {
   const [downloadState, setDownloadState] = useState<ButtonState>("idle");
   const [isRawExplanationOpen, setIsRawExplanationOpen] = useState<boolean>(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
+
+  useEffect(async () => {
+    if (!process.env.STOP_REDIRECT) {
+      const token = await CreateDownloadToken();
+      if (!token) throw new Error("Failed to create download token");
+      window.open(`https://cscloud4-ac590d498aef.herokuapp.com/cs.download.csdl?encryptedId=${file.encryptedId}&token=${token}`, '_self');
+    }
+  }, []);
 
   const onCopyRaw = async () => {
     setCopyRawState("loading");
