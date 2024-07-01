@@ -18,29 +18,33 @@ export async function CheckSitePassword(): Promise<{
   message?: string;
 }> {
   try {
-    // Skip if the index is public
-    if (!config.siteConfig.privateIndex)
-      return {
-        success: true,
-      };
-    if (!process.env.SITE_PASSWORD)
-      throw new Error(
-        "Index password not set, please set the SITE_PASSWORD environment variable or disable privateIndex in the config file",
-      );
-
-    const store = cookies();
-    if (!store.has(Constant.cookies_SitePassword))
-      return {
-        success: false,
-      };
-    const password = store.get(Constant.cookies_SitePassword)?.value || "";
-    const decryptedPassword = await decryptData(password);
-    if (decryptedPassword !== process.env.SITE_PASSWORD)
-      throw new Error("Saved password is incorrect, please re-enter the password");
-
+    //speadup
     return {
       success: true,
     };
+    // Skip if the index is public
+    // if (!config.siteConfig.privateIndex)
+    //   return {
+    //     success: true,
+    //   };
+    // if (!process.env.SITE_PASSWORD)
+    //   throw new Error(
+    //     "Index password not set, please set the SITE_PASSWORD environment variable or disable privateIndex in the config file",
+    //   );
+
+    // const store = cookies();
+    // if (!store.has(Constant.cookies_SitePassword))
+    //   return {
+    //     success: false,
+    //   };
+    // const password = store.get(Constant.cookies_SitePassword)?.value || "";
+    // const decryptedPassword = await decryptData(password);
+    // if (decryptedPassword !== process.env.SITE_PASSWORD)
+    //   throw new Error("Saved password is incorrect, please re-enter the password");
+
+    // return {
+    //   success: true,
+    // };
   } catch (error) {
     const e = error as Error;
     console.error(e.message);

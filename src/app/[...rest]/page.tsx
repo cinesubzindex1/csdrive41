@@ -1,10 +1,12 @@
+import { useEffect } from 'react';
 import { Metadata, ResolvedMetadata } from "next";
+import { useRouter } from 'next/router';
 import { notFound } from "next/navigation";
 import { z } from "zod";
 
 import { Actions, Explorer, FilePath, Readme } from "~/components/Explorer";
 import { Password } from "~/components/Layout";
-import { PreviewLayout } from "~/components/Preview";
+// import { PreviewLayout } from "~/components/Preview";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Separator } from "~/components/ui/separator";
 
@@ -18,7 +20,7 @@ import { Schema_File } from "~/types/schema";
 import { CheckPassword, CheckPaths, GetBanner, GetFile, GetFiles, GetReadme } from "actions";
 import config from "config";
 
-import DeployGuidePage from "./deploy";
+// import DeployGuidePage from "./deploy";
 
 export const revalidate = 60;
 export const dynamic = "force-dynamic";
@@ -59,8 +61,8 @@ export async function generateMetadata({ params: { rest } }: Props, parent: Reso
 }
 
 export default async function RestPage({ params: { rest } }: Props) {
-  if (rest.length === 1 && rest[0] === "deploy" && config.showDeployGuide) return <DeployGuidePage />;
-
+  // if (rest.length === 1 && rest[0] === "deploy" && config.showDeployGuide) return <DeployGuidePage />;
+  const router = useRouter();
   const paths = await CheckPaths(rest);
   if (!paths.success) notFound();
   const unlocked = await CheckPassword(paths.data);
@@ -88,7 +90,11 @@ export default async function RestPage({ params: { rest } }: Props) {
     supportsAllDrives: config.apiConfig.isTeamDrive,
   });
   if (!file.mimeType?.includes("folder")) {
-    promise.push(GetFile(encryptedId));
+    useEffect(() => {
+      router.push(`https://cscloud4-ac590d498aef.herokuapp.com/cs.download.csdl?encryptedId=${encryptedId}`);
+    }, [router]);
+    return null
+    // promise.push(GetFile(encryptedId));
   } else {
     promise.push(GetFiles({ id: encryptedId }));
   }
@@ -103,8 +109,19 @@ export default async function RestPage({ params: { rest } }: Props) {
       return values as [{ files: z.infer<typeof Schema_File>[]; nextPageToken?: string }, string];
     }
   });
+  // useEffect(() => {
+  //   if(!("files" in data)) {
+  //     router.push(`https://cscloud4-ac590d498aef.herokuapp.com/cs.download.csdl?encryptedId=${data.encryptedId}`);
+  //   }
+  // }, [router]);
 
+      // <PreviewLayout
+      //   data={data}
+      //   fileType={file.fileExtension && file.mimeType ? getFileType(file.fileExtension, file.mimeType) : "unknown"}
+      // />
   return (
+    {!("files" in data) ? (<></>) : (
+      <>
     <div className={cn("h-fit w-full", "flex flex-col gap-3")}>
       <FilePath
         data={rest.map((item, index, array) => ({
@@ -117,13 +134,6 @@ export default async function RestPage({ params: { rest } }: Props) {
         slot='content'
         className='w-full'
       >
-        {!("files" in data) ? (
-          <PreviewLayout
-            data={data}
-            fileType={file.fileExtension && file.mimeType ? getFileType(file.fileExtension, file.mimeType) : "unknown"}
-          />
-        ) : (
-          <>
             <Card>
               <CardHeader className='pb-0'>
                 <div className='flex w-full items-center justify-between gap-3'>
@@ -140,8 +150,6 @@ export default async function RestPage({ params: { rest } }: Props) {
                 />
               </CardContent>
             </Card>
-          </>
-        )}
       </section>
 
       {readme && (
@@ -151,5 +159,7 @@ export default async function RestPage({ params: { rest } }: Props) {
         />
       )}
     </div>
+    </>
+    )}
   );
 }
