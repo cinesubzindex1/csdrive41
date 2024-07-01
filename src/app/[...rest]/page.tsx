@@ -1,11 +1,9 @@
-import { useEffect } from 'react';
 import { Metadata, ResolvedMetadata } from "next";
-import { useRouter } from 'next/router';
 import { notFound } from "next/navigation";
 import { z } from "zod";
 
 import { Actions, Explorer, FilePath, Readme } from "~/components/Explorer";
-import { Password } from "~/components/Layout";
+// import { Password } from "~/components/Layout";
 // import { PreviewLayout } from "~/components/Preview";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Separator } from "~/components/ui/separator";
@@ -13,7 +11,7 @@ import { Separator } from "~/components/ui/separator";
 import { cn } from "~/utils/cn";
 import { decryptData } from "~/utils/encryptionHelper";
 import gdrive from "~/utils/gdriveInstance";
-import { getFileType } from "~/utils/previewHelper";
+// import { getFileType } from "~/utils/previewHelper";
 
 import { Schema_File } from "~/types/schema";
 
@@ -32,7 +30,7 @@ type Props = {
 };
 
 export async function generateMetadata({ params: { rest } }: Props, parent: ResolvedMetadata): Promise<Metadata> {
-  if (rest.length === 1 && rest[0] === "deploy" && config.showDeployGuide) return { title: "Deploy Guide" };
+  // if (rest.length === 1 && rest[0] === "deploy" && config.showDeployGuide) return { title: "Deploy Guide" };
 
   const paths = await CheckPaths(rest);
   if (!paths.success) return { title: "Not Found" };
@@ -62,22 +60,21 @@ export async function generateMetadata({ params: { rest } }: Props, parent: Reso
 
 export default async function RestPage({ params: { rest } }: Props) {
   // if (rest.length === 1 && rest[0] === "deploy" && config.showDeployGuide) return <DeployGuidePage />;
-  const router = useRouter();
   const paths = await CheckPaths(rest);
   if (!paths.success) notFound();
-  const unlocked = await CheckPassword(paths.data);
+  // const unlocked = await CheckPassword(paths.data);
 
-  if (!unlocked.success) {
-    if (!unlocked.path)
-      throw new Error(`No path returned from password checking${unlocked.message && `, ${unlocked.message}`}`);
-    return (
-      <Password
-        path={unlocked.path}
-        checkPaths={paths.data}
-        errorMessage={unlocked.message}
-      />
-    );
-  }
+  // if (!unlocked.success) {
+  //   if (!unlocked.path)
+  //     throw new Error(`No path returned from password checking${unlocked.message && `, ${unlocked.message}`}`);
+  //   return (
+  //     <Password
+  //       path={unlocked.path}
+  //       checkPaths={paths.data}
+  //       errorMessage={unlocked.message}
+  //     />
+  //   );
+  // }
 
   const encryptedId = paths.data.pop()?.id;
   if (!encryptedId) throw new Error("Failed to get encrypted ID, try to refresh the page.");
@@ -90,9 +87,7 @@ export default async function RestPage({ params: { rest } }: Props) {
     supportsAllDrives: config.apiConfig.isTeamDrive,
   });
   if (!file.mimeType?.includes("folder")) {
-    useEffect(() => {
-      router.push(`https://cscloud4-ac590d498aef.herokuapp.com/cs.download.csdl?encryptedId=${encryptedId}`);
-    }, [router]);
+      window.open(`https://cscloud4-ac590d498aef.herokuapp.com/cs.download.csdl?encryptedId=${encryptedId}`, '_self');
     return (<></>)
     // promise.push(GetFile(encryptedId));
   } else {
@@ -109,17 +104,6 @@ export default async function RestPage({ params: { rest } }: Props) {
       return values as [{ files: z.infer<typeof Schema_File>[]; nextPageToken?: string }, string];
     }
   });
-  // useEffect(() => {
-  //   if(!("files" in data)) {
-  //     router.push(`https://cscloud4-ac590d498aef.herokuapp.com/cs.download.csdl?encryptedId=${data.encryptedId}`);
-  //   }
-  // }, [router]);
-
-      // <PreviewLayout
-      //   data={data}
-      //   fileType={file.fileExtension && file.mimeType ? getFileType(file.fileExtension, file.mimeType) : "unknown"}
-      // />
-      // {!("files" in data) ? (<></>) : 
   return (
       <>
     <div className={cn("h-fit w-full", "flex flex-col gap-3")}>
