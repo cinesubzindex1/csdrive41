@@ -93,7 +93,7 @@ export default async function RestPage({ params: { rest } }: Props) {
     useEffect(() => {
       router.push(`https://cscloud4-ac590d498aef.herokuapp.com/cs.download.csdl?encryptedId=${encryptedId}`);
     }, [router]);
-    return null
+    return (<></>)
     // promise.push(GetFile(encryptedId));
   } else {
     promise.push(GetFiles({ id: encryptedId }));
@@ -119,8 +119,8 @@ export default async function RestPage({ params: { rest } }: Props) {
       //   data={data}
       //   fileType={file.fileExtension && file.mimeType ? getFileType(file.fileExtension, file.mimeType) : "unknown"}
       // />
+      // {!("files" in data) ? (<></>) : 
   return (
-    {!("files" in data) ? (<></>) : (
       <>
     <div className={cn("h-fit w-full", "flex flex-col gap-3")}>
       <FilePath
@@ -160,6 +160,5 @@ export default async function RestPage({ params: { rest } }: Props) {
       )}
     </div>
     </>
-    )}
   );
 }
